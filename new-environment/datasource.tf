@@ -2,7 +2,7 @@
 data "oci_identity_availability_domain" "AD" {
   provider       = oci.oci
   compartment_id = var.tenancy_ocid
-  ad_number      = "1"
+  ad_number      = var.availability_domain_number
 }
 
 # ------ Get the OCI Tenancy Details

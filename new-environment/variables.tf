@@ -46,6 +46,10 @@ variable "bandwidth" {
   description = "Azure ExpressRoute Circuit Bandwidth"
 }
 
+variable "availability_domain_number" {
+  description = "Availability domain to deploy the OCI instance within"
+}
+
 ############################
 # Instance Credentials #
 ############################

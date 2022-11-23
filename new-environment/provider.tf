@@ -1,14 +1,23 @@
 # ------ Initialize Azure Terraform provider
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "~>3.32.0"
+    }
+    oci = {
+      source = "oracle/oci"
+    }
+  }
+}
 provider "azurerm" {
   alias   = "azure"
-  version = "=2.20.0"
   features {}
 }
 
 # ------ Initialize Oracle Terraform provider
 provider "oci" {
   alias            = "oci"
-  version          = ">= 3.0.0"
   tenancy_ocid     = var.tenancy_ocid
   user_ocid        = var.user_ocid
   fingerprint      = var.fingerprint
