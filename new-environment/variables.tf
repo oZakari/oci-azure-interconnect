@@ -26,6 +26,11 @@ variable "private_key_path" {
   description = "User Private Key Path"
 }
 
+variable "private_key_password" {
+  description = "Passphrase used during private key creation"
+  sensitive   = true
+}
+
 variable "ssh_public_key" {
   description = "SSH Public Key String"
 }
@@ -51,17 +56,24 @@ variable "availability_domain_number" {
 }
 
 ############################
+# Personal IP #
+############################
+variable "personalip_address_space" {
+  description = "Address space containing your personal IP address"
+}
+
+############################
 # Instance Credentials #
 ############################
 
 variable "InstanceShape" {
   description = "Instance Default Size"
-  default     = "VM.Standard2.1"
+  default     = "VM.Standard.E4.Flex"
 }
 
 variable "InstanceImageOCID" {
   description = "Instance Image OCID Associated with Each Region"
-  type        = map
+  type        = map(any)
   default = {
     // See https://docs.us-phoenix-1.oraclecloud.com/images/
     // Oracle-provided image "Oracle-Linux-7.4-2018.02.21-1"
@@ -91,12 +103,14 @@ variable "azure_vnet_address" {
 
 variable "azure_gateway_subnet" {
   description = "Azure Gateway Subnet Address Range"
-  default     = "10.12.1.0/24"
+  type        = list(string)
+  default     = ["10.12.1.0/24"]
 }
 
 variable "azure_compute_subnet" {
   description = "Azure Compute Subnet Address Range"
-  default     = "10.12.2.0/24"
+  type        = list(string)
+  default     = ["10.12.2.0/24"]
 }
 
 variable "azure_compute_vnic_name" {

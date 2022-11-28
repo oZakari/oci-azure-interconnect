@@ -2,7 +2,7 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "~>3.32.0"
     }
     oci = {
@@ -11,7 +11,7 @@ terraform {
   }
 }
 provider "azurerm" {
-  alias   = "azure"
+  alias = "azure"
   features {}
 }
 
@@ -22,6 +22,7 @@ provider "oci" {
   user_ocid        = var.user_ocid
   fingerprint      = var.fingerprint
   private_key_path = var.private_key_path
-  region           = var.region
+  #private_key_password = var.private_key_password
+  region = var.region
 }
 
