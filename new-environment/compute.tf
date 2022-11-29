@@ -20,8 +20,9 @@ resource "azurerm_linux_virtual_machine" "azure_compute_vm" {
   resource_group_name             = azurerm_resource_group.resource_group.name
   location                        = azurerm_resource_group.resource_group.location
   size                            = "Standard_F2"
-  disable_password_authentication = "true"
+  disable_password_authentication = "false"
   admin_username                  = "adminuser"
+  admin_password                  = var.vm_pw
   admin_ssh_key {
     username   = "adminuser"
     public_key = var.ssh_public_key
@@ -39,7 +40,7 @@ resource "azurerm_linux_virtual_machine" "azure_compute_vm" {
   source_image_reference {
     publisher = "Oracle"
     offer     = "Oracle-Linux"
-    sku       = "77"
+    sku       = "ol9-lvm"
     version   = "latest"
   }
 }
@@ -52,6 +53,12 @@ resource "oci_core_instance" "oci_compute_instance" {
   display_name        = var.oci_compute_instance_name
   shape               = var.InstanceShape
 
+  shape_config {
+    baseline_ocpu_utilization = "BASELINE_1_1"
+    memory_in_gbs             = "8"
+    ocpus                     = "4"
+  }
+
   create_vnic_details {
     subnet_id        = oci_core_subnet.compute_subnet.id
     assign_public_ip = true
@@ -62,9 +69,8 @@ resource "oci_core_instance" "oci_compute_instance" {
   }
 
   source_details {
-    source_type             = "image"
-    source_id               = data.oci_core_images.InstanceImageOCID.images[0].id
-    boot_volume_size_in_gbs = "50"
+    source_type = "image"
+    source_id   = data.oci_core_images.InstanceImageOCID.images[0].id
   }
 
   timeouts {

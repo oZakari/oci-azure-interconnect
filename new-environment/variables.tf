@@ -68,7 +68,7 @@ variable "personalip_address_space" {
 
 variable "InstanceShape" {
   description = "Instance Default Size"
-  default     = "VM.Standard.E4.Flex"
+  default     = "VM.Standard.A1.Flex"
 }
 
 variable "InstanceImageOCID" {
@@ -77,7 +77,8 @@ variable "InstanceImageOCID" {
   default = {
     // See https://docs.us-phoenix-1.oraclecloud.com/images/
     // Oracle-provided image "Oracle-Linux-7.4-2018.02.21-1"
-    us-phoenix-1   = "ocid1.image.oc1.phx.aaaaaaaaupbfz5f5hdvejulmalhyb6goieolullgkpumorbvxlwkaowglslq"
+    us-phoenix-1 = "ocid1.image.oc1.phx.aaaaaaaais7ewyp7hg5piujkphwgnd6sqdqefw7dj4hx45zymolbiss3xlsq"
+    //Need to switch out image ids below
     us-sanjose-1   = "ocid1.image.oc1.us-sanjose-1.aaaaaaaanwz2yn524lxipjoupop7cjcmy5r4znohz2gbjcxmgzxf4xjs7q3a"
     ca-toronto-1   = "ocid1.image.oc1.ca-toronto-1.aaaaaaaasbx5hzms4eyrs6e3woez6zxxnfd7yuqtc6bg53jiqevoe52ob4qq"
     us-ashburn-1   = "ocid1.image.oc1.iad.aaaaaaaajlw3xfie2t5t52uegyhiq2npx7bqyu4uvi2zyu3w3mqayc2bxmaa"
@@ -85,6 +86,11 @@ variable "InstanceImageOCID" {
     uk-london-1    = "ocid1.image.oc1.uk-london-1.aaaaaaaaa6h6gj6v4n56mqrbgnosskq63blyv2752g36zerymy63cfkojiiq"
     eu-amsterdam-1 = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaakuiz2wmx7ticqlfr2skyizauwfv4wasuttoabekqzckjp6ggsnsa"
   }
+}
+
+variable "vm_pw" {
+  description = "PW for your virtual machine"
+  sensitive   = true
 }
 
 ############################
@@ -120,7 +126,7 @@ variable "azure_compute_vnic_name" {
 
 variable "azure_compute_machine_name" {
   description = "Azure Compute VM Name"
-  default     = "azure-compute-name"
+  default     = "azure-compute"
 }
 
 variable "azure_express_circuit_name" {
