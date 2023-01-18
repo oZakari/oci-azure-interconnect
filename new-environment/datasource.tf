@@ -1,8 +1,7 @@
 # ------ Get a List of Availability Domain
-data "oci_identity_availability_domain" "AD" {
+data "oci_identity_availability_domains" "ads" {
   provider       = oci.oci
   compartment_id = var.tenancy_ocid
-  ad_number      = var.availability_domain_number
 }
 
 # ------ Get the OCI Tenancy Details
@@ -20,12 +19,12 @@ data "oci_core_fast_connect_provider_services" "test_fast_connect_provider_servi
 # ------ Get the Microsoft Azure Providor Details
 data "oci_core_fast_connect_provider_service" "test_fast_connect_provider_service" {
   provider            = oci.oci
-  provider_service_id = "${lookup(element(data.oci_core_fast_connect_provider_services.test_fast_connect_provider_services.fast_connect_provider_services, index(data.oci_core_fast_connect_provider_services.test_fast_connect_provider_services.fast_connect_provider_services.*.provider_name, "Microsoft Azure")), "id")}"
+  provider_service_id = lookup(element(data.oci_core_fast_connect_provider_services.test_fast_connect_provider_services.fast_connect_provider_services, index(data.oci_core_fast_connect_provider_services.test_fast_connect_provider_services.fast_connect_provider_services.*.provider_name, "Microsoft Azure")), "id")
 }
 
 # ------ Define a Variable for Shape
 variable "shape" {
-  type = map
+  type = map(any)
   default = {
     10000 = "10 Gbps"
     5000  = "5 Gbps"
@@ -41,7 +40,7 @@ data "http" "myip" {
 
 # ------ Get the latest Oracle Linux image
 data "oci_core_images" "InstanceImageOCID" {
-  provider            = oci.oci
+  provider       = oci.oci
   compartment_id = var.compartment_ocid
   # operating_system         = var.instance_os
   # operating_system_version = var.linux_os_version

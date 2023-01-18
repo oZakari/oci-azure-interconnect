@@ -1,4 +1,27 @@
 ############################
+# Azure Region Credentials #
+############################
+
+variable "azure_region" {
+  description = "Azure Region Name"
+}
+
+variable "peering_location" {
+  description = "Azure Peering Location Where OCI providor exists"
+}
+
+variable "bandwidth" {
+  description = "Azure ExpressRoute Circuit Bandwidth"
+}
+
+############################
+# Personal IP #
+############################
+variable "personalip_address_space" {
+  description = "Address space containing your personal IP address"
+}
+
+############################
 #  OCI Tenancy Credentials #
 ############################
 
@@ -33,33 +56,6 @@ variable "private_key_password" {
 
 variable "ssh_public_key" {
   description = "SSH Public Key String"
-}
-
-############################
-# Azure Region Credentials #
-############################
-
-variable "azure_region" {
-  description = "Azure Region Name"
-}
-
-variable "peering_location" {
-  description = "Azure Peering Location Where OCI providor exists"
-}
-
-variable "bandwidth" {
-  description = "Azure ExpressRoute Circuit Bandwidth"
-}
-
-variable "availability_domain_number" {
-  description = "Availability domain to deploy the OCI instance within"
-}
-
-############################
-# Personal IP #
-############################
-variable "personalip_address_space" {
-  description = "Address space containing your personal IP address"
 }
 
 ############################
@@ -179,6 +175,7 @@ variable "virtual_network_gateway_connection_name" {
   default     = "azure_to_oci"
 }
 
+
 ###########################################
 #  Oracle Cloud Infrastructure Variables  #
 ###########################################
@@ -195,7 +192,7 @@ variable "oci_compute_subnet_display_name" {
 
 variable "oci_compute_subnet" {
   description = "Compute Subnet CIDR"
-  default     = "10.1.10.0/24"
+  default     = "10.1.1.0/24"
 }
 
 variable "oci_compute_subnet_dns_label" {
@@ -220,5 +217,5 @@ variable "security_policy_name" {
 
 variable "oci_compute_instance_name" {
   description = "OCI Compute VM Name"
-  default     = "ComputeVM"
+  default     = "oci-compute"
 }

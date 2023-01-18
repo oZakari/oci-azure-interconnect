@@ -10,10 +10,11 @@ resource "oci_core_vcn" "interconnect_vcn" {
 # ------ Create Public Compute Subnet
 resource "oci_core_subnet" "compute_subnet" {
   provider            = oci.oci
-  availability_domain = data.oci_identity_availability_domain.AD.name
-  cidr_block          = var.oci_compute_subnet
-  display_name        = var.oci_compute_subnet_display_name
-  dns_label           = var.oci_compute_subnet_dns_label
+  count               = length(data.oci_identity_availability_domains.ads.availability_domains)
+  availability_domain = lookup(data.oci_identity_availability_domains.ads.availability_domains[count.index], "name")
+  cidr_block          = cidrsubnet(var.oci_compute_subnet, 3, count.index)
+  display_name        = join("-", [var.oci_compute_subnet_display_name, "domain", count.index + 1])
+  dns_label           = join("", [var.oci_compute_subnet_dns_label, count.index + 1])
   security_list_ids   = [oci_core_security_list.security_policies_azure.id]
   compartment_id      = var.compartment_ocid
   vcn_id              = oci_core_vcn.interconnect_vcn.id
