@@ -27,7 +27,7 @@ resource "azurerm_linux_virtual_machine" "azure_compute_vm" {
   admin_password                  = var.vm_pw
   admin_ssh_key {
     username   = "adminuser"
-    public_key = var.ssh_public_key
+    public_key = file(var.ssh_public_key_path)
   }
   network_interface_ids = [
     azurerm_network_interface.compute_vm_vnic[each.value].id,
@@ -66,7 +66,7 @@ resource "oci_core_instance" "oci_compute_instance" {
   }
 
   metadata = {
-    ssh_authorized_keys = var.ssh_public_key
+    ssh_authorized_keys = file(var.ssh_public_key_path)
   }
 
   source_details {

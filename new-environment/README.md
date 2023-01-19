@@ -61,7 +61,7 @@ You can follow below setps to deploy this setup in your account:
     private_key_path     = "<pem_private_key_pem_file_path>"
 
     # SSH Keys
-    ssh_public_key  = "<public_ssh_key_string_value>"
+    ssh_public_key_path = "<public_ssh_key_path_value>"
 
     # Region
     region = "<oci_region>"

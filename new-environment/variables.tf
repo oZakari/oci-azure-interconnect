@@ -54,8 +54,8 @@ variable "private_key_password" {
   sensitive   = true
 }
 
-variable "ssh_public_key" {
-  description = "SSH Public Key String"
+variable "ssh_public_key_path" {
+  description = "SSH Public Key string value"
 }
 
 ############################
