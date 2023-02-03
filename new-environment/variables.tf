@@ -71,16 +71,20 @@ variable "InstanceImageOCID" {
   description = "Instance Image OCID Associated with Each Region"
   type        = map(any)
   default = {
-    // See https://docs.us-phoenix-1.oraclecloud.com/images/
-    // Oracle-provided image "Oracle-Linux-7.4-2018.02.21-1"
-    us-phoenix-1 = "ocid1.image.oc1.phx.aaaaaaaais7ewyp7hg5piujkphwgnd6sqdqefw7dj4hx45zymolbiss3xlsq"
-    //Need to switch out image ids below
-    us-sanjose-1   = "ocid1.image.oc1.us-sanjose-1.aaaaaaaanwz2yn524lxipjoupop7cjcmy5r4znohz2gbjcxmgzxf4xjs7q3a"
-    ca-toronto-1   = "ocid1.image.oc1.ca-toronto-1.aaaaaaaasbx5hzms4eyrs6e3woez6zxxnfd7yuqtc6bg53jiqevoe52ob4qq"
-    us-ashburn-1   = "ocid1.image.oc1.iad.aaaaaaaajlw3xfie2t5t52uegyhiq2npx7bqyu4uvi2zyu3w3mqayc2bxmaa"
-    eu-frankfurt-1 = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa7d3fsb6272srnftyi4dphdgfjf6gurxqhmv6ileds7ba3m2gltxq"
-    uk-london-1    = "ocid1.image.oc1.uk-london-1.aaaaaaaaa6h6gj6v4n56mqrbgnosskq63blyv2752g36zerymy63cfkojiiq"
-    eu-amsterdam-1 = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaakuiz2wmx7ticqlfr2skyizauwfv4wasuttoabekqzckjp6ggsnsa"
+    // See https://docs.oracle.com/en-us/iaas/images/image/9801d535-f7a9-4051-9fbe-2df35ce229e0/
+    // Johannesburg and Singapore using Ubuntu images
+    us-phoenix-1      = "ocid1.image.oc1.phx.aaaaaaaafa256ipe7v5c6pmiqzy553g72tmow4wvwfmkpp6sunjyo77em4ga"
+    us-sanjose-1      = "ocid1.image.oc1.us-sanjose-1.aaaaaaaaxl7w4jnusqvmt6ic5ppz7bck66wrtcxm7afb4b2bem7fnzha7lma"
+    us-ashburn-1      = "ocid1.image.oc1.iad.aaaaaaaabr2p2s6fnh5kf4u77y7se2kmaieuzjhqfmjwquw3csgq32i6kx5a"
+    a-toronto-1       = "ocid1.image.oc1.ca-toronto-1.aaaaaaaakgl42zrzi4kpd7k2toyltq5eqgtpevzscpsjaa75zxqxzxq4haeq"
+    sa-vinhedo-1      = "ocid1.image.oc1.sa-vinhedo-1.aaaaaaaa3l23v2zmzygmyggzmqr6uxxikq2wpazn5ymxg6o4pjsewdplh3cq"
+    eu-frankfurt-1    = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaat5wpayf23ew5m2oilaq3sg6mnclfy62ukwb3br3z6jlmsha4wxnq"
+    eu-amsterdam-1    = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaa526auzq66wvw4m2f4l2jhvlluvjc6njpnzqjtuiq23ghb3u5ymoa"
+    uk-london-1       = "ocid1.image.oc1.uk-london-1.aaaaaaaauayefkbfjhmi7zlbc7wcstu77amzfj6tjllbpbakk6sumdiqipea"
+    af-johannesburg-1 = "ocid1.image.oc1.af-johannesburg-1.aaaaaaaab7yk3c6tq2w4a2qnpyjiwtporcrjpfax2sfnf35enlrafj4r3e3a"
+    ap-osaka-1        = "ocid1.image.oc1.ap-osaka-1.aaaaaaaaipqswv56ouy6jadb3c3jqacyjykq2xunvnfnqzsci72cwjd6s2la"
+    ap-seoul-1        = "ocid1.image.oc1.ap-seoul-1.aaaaaaaamcdp3k2q2r3n7ehqerumsveqpfldxdfd2l6jhzb63aclo62hxt2a"
+    ap-singapore-1    = "ocid1.image.oc1.ap-singapore-1.aaaaaaaarhngxlpmasxc7ieavyqyzgtf7tpz75iavxlu6yfhljqyqdnxa6ga"
   }
 }
 
