@@ -82,7 +82,7 @@ variable "InstanceImageOCID" {
     eu-amsterdam-1    = "ocid1.image.oc1.eu-amsterdam-1.aaaaaaaa526auzq66wvw4m2f4l2jhvlluvjc6njpnzqjtuiq23ghb3u5ymoa"
     uk-london-1       = "ocid1.image.oc1.uk-london-1.aaaaaaaauayefkbfjhmi7zlbc7wcstu77amzfj6tjllbpbakk6sumdiqipea"
     af-johannesburg-1 = "ocid1.image.oc1.af-johannesburg-1.aaaaaaaab7yk3c6tq2w4a2qnpyjiwtporcrjpfax2sfnf35enlrafj4r3e3a"
-    ap-osaka-1        = "ocid1.image.oc1.ap-osaka-1.aaaaaaaaipqswv56ouy6jadb3c3jqacyjykq2xunvnfnqzsci72cwjd6s2la"
+    ap-tokyo-1        = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaazgoy6klsxzbi5jh5kx2qwxw6l6mqtlbo4c4kak4zes7zwytd4z2q"
     ap-seoul-1        = "ocid1.image.oc1.ap-seoul-1.aaaaaaaamcdp3k2q2r3n7ehqerumsveqpfldxdfd2l6jhzb63aclo62hxt2a"
     ap-singapore-1    = "ocid1.image.oc1.ap-singapore-1.aaaaaaaarhngxlpmasxc7ieavyqyzgtf7tpz75iavxlu6yfhljqyqdnxa6ga"
   }

@@ -7,7 +7,7 @@ terraform {
     }
     oci = {
       source  = "oracle/oci"
-      version = "~>4.103.0"
+      version = "~>4.105.0"
     }
   }
 }
@@ -18,12 +18,12 @@ provider "azurerm" {
 
 # ------ Initialize Oracle Terraform provider
 provider "oci" {
-  alias            = "oci"
-  tenancy_ocid     = var.tenancy_ocid
-  user_ocid        = var.user_ocid
-  fingerprint      = var.fingerprint
-  private_key_path = var.private_key_path
-  #private_key_password = var.private_key_password
-  region = var.region
+  alias                = "oci"
+  tenancy_ocid         = var.tenancy_ocid
+  user_ocid            = var.user_ocid
+  fingerprint          = var.fingerprint
+  private_key_path     = var.private_key_path
+  private_key_password = var.private_key_password
+  region               = var.region
 }
 
