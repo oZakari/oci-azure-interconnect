@@ -21,7 +21,7 @@ resource "azurerm_linux_virtual_machine" "azure_compute_vm" {
   resource_group_name             = azurerm_resource_group.resource_group.name
   location                        = azurerm_resource_group.resource_group.location
   zone                            = each.value
-  size                            = "Standard_F2"
+  size                            = "Standard_D2as_v4"
   disable_password_authentication = "false"
   admin_username                  = "adminuser"
   admin_password                  = var.vm_pw
