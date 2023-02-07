@@ -29,8 +29,13 @@ variable "tenancy_ocid" {
   description = "User Tenancy OCID"
 }
 
-variable "region" {
+variable "oci_region" {
   description = "User Region Value"
+}
+
+variable "oci_home_region" {
+  description = "Home Region Value"
+  default     = "us-ashburn-1"
 }
 
 variable "user_ocid" {

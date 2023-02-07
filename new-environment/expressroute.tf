@@ -16,7 +16,7 @@ resource "oci_core_virtual_circuit" "virtual_circuit" {
   gateway_id                = oci_core_drg.drg_azure.id
   provider_service_id       = data.oci_core_fast_connect_provider_service.test_fast_connect_provider_service.id
   provider_service_key_name = azurerm_express_route_circuit.express_route_circuit.service_key
-  region                    = var.region
+  region                    = var.oci_region
 }
 
 # ------ Create ExpressRoute Circuit
