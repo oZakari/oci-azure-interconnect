@@ -1,5 +1,5 @@
 locals {
-  regionavailabilityzones = {
+  region_availability_zones = {
     "West US"              = ["1", "2", "3"]
     "West US 3"            = ["1"]
     "East US"              = ["1", "2", "3"]

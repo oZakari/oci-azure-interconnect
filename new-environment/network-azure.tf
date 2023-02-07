@@ -1,10 +1,3 @@
-# ------ Create Azure Resource Group
-resource "azurerm_resource_group" "resource_group" {
-  provider = azurerm.azure
-  name     = var.azure_resource_group_name
-  location = var.azure_region
-}
-
 # ------ Create Azure Virtual Network
 resource "azurerm_virtual_network" "virtual_network" {
   provider            = azurerm.azure

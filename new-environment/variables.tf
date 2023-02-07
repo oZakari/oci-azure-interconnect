@@ -29,10 +29,6 @@ variable "tenancy_ocid" {
   description = "User Tenancy OCID"
 }
 
-variable "compartment_ocid" {
-  description = "User Compartment OCID"
-}
-
 variable "region" {
   description = "User Region Value"
 }
@@ -62,12 +58,12 @@ variable "ssh_public_key_path" {
 # Instance Credentials #
 ############################
 
-variable "InstanceShape" {
+variable "instance_shape" {
   description = "Instance Default Size"
   default     = "VM.Standard.A1.Flex"
 }
 
-variable "InstanceImageOCID" {
+variable "instance_image_ocid" {
   description = "Instance Image OCID Associated with Each Region"
   type        = map(any)
   default = {

@@ -2,7 +2,7 @@
 resource "oci_core_vcn" "interconnect_vcn" {
   provider       = oci.oci
   cidr_block     = var.interconnect_vcn_cidr_block
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   display_name   = "InterConnect VCN"
   dns_label      = "interconnectvcn"
 }
@@ -16,7 +16,7 @@ resource "oci_core_subnet" "compute_subnet" {
   display_name        = join("-", [var.oci_compute_subnet_display_name, "domain", count.index + 1])
   dns_label           = join("", [var.oci_compute_subnet_dns_label, count.index + 1])
   security_list_ids   = [oci_core_security_list.security_policies_azure.id]
-  compartment_id      = var.compartment_ocid
+  compartment_id      = oci_identity_compartment.compartment.id
   vcn_id              = oci_core_vcn.interconnect_vcn.id
   route_table_id      = oci_core_route_table.compute_route_table.id
   dhcp_options_id     = oci_core_vcn.interconnect_vcn.default_dhcp_options_id
@@ -25,7 +25,7 @@ resource "oci_core_subnet" "compute_subnet" {
 # ------ Create OCI VCN Internet Gateway
 resource "oci_core_internet_gateway" "internet_gateway" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   display_name   = var.internet_gateway_name
   vcn_id         = oci_core_vcn.interconnect_vcn.id
 }
@@ -33,7 +33,7 @@ resource "oci_core_internet_gateway" "internet_gateway" {
 # ------ Create OCI Compute Route Table
 resource "oci_core_route_table" "compute_route_table" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   vcn_id         = oci_core_vcn.interconnect_vcn.id
   display_name   = var.compute_route_table_display_name
 
@@ -52,13 +52,13 @@ resource "oci_core_route_table" "compute_route_table" {
 # ------ Create DRG on OCI 
 resource "oci_core_drg" "drg_azure" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
 }
 
 # ------ Create Security Policies on Azure
 resource "oci_core_security_list" "security_policies_azure" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   display_name   = var.security_policy_name
   vcn_id         = oci_core_vcn.interconnect_vcn.id
 

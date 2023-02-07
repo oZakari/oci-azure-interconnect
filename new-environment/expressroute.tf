@@ -1,7 +1,7 @@
 # ------ Create Virtual Circuit
 resource "oci_core_virtual_circuit" "virtual_circuit" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   type           = "PRIVATE"
 
   bandwidth_shape_name = var.shape[var.bandwidth]

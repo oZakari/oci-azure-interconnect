@@ -1,7 +1,7 @@
 # ------ Create Compute VM Network Interface Card
 resource "azurerm_network_interface" "compute_vm_vnic" {
   provider            = azurerm.azure
-  for_each            = toset(local.regionavailabilityzones[var.azure_region])
+  for_each            = toset(local.region_availability_zones[var.azure_region])
   name                = join("-", [var.azure_compute_vnic_name, "zone", each.value])
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
@@ -16,7 +16,7 @@ resource "azurerm_network_interface" "compute_vm_vnic" {
 # ------ Create Compute VM on Azure
 resource "azurerm_linux_virtual_machine" "azure_compute_vm" {
   provider                        = azurerm.azure
-  for_each                        = toset(local.regionavailabilityzones[var.azure_region])
+  for_each                        = toset(local.region_availability_zones[var.azure_region])
   name                            = join("-", [var.azure_compute_machine_name, "zone", each.value])
   resource_group_name             = azurerm_resource_group.resource_group.name
   location                        = azurerm_resource_group.resource_group.location
@@ -50,9 +50,9 @@ resource "oci_core_instance" "oci_compute_instance" {
   provider            = oci.oci
   count               = length(data.oci_identity_availability_domains.ads.availability_domains)
   availability_domain = lookup(data.oci_identity_availability_domains.ads.availability_domains[count.index], "name")
-  compartment_id      = var.compartment_ocid
+  compartment_id      = oci_identity_compartment.compartment.id
   display_name        = join("-", [var.oci_compute_instance_name, "domain", count.index + 1])
-  shape               = var.InstanceShape
+  shape               = var.instance_shape
 
   shape_config {
     baseline_ocpu_utilization = "BASELINE_1_1"
@@ -71,7 +71,7 @@ resource "oci_core_instance" "oci_compute_instance" {
 
   source_details {
     source_type = "image"
-    source_id   = data.oci_core_images.InstanceImageOCID.images[0].id
+    source_id   = data.oci_core_images.instance_image_ocid.images[0].id
   }
 
   timeouts {

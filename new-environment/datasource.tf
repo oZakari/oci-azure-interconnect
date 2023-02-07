@@ -13,7 +13,7 @@ data "oci_identity_tenancy" "tenancy" {
 # ------ Get the OCI Fast Connect Providors Details
 data "oci_core_fast_connect_provider_services" "test_fast_connect_provider_services" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
 }
 
 # ------ Get the Microsoft Azure Providor Details
@@ -39,9 +39,9 @@ data "http" "myip" {
 }
 
 # ------ Get the latest Oracle Linux image
-data "oci_core_images" "InstanceImageOCID" {
+data "oci_core_images" "instance_image_ocid" {
   provider       = oci.oci
-  compartment_id = var.compartment_ocid
+  compartment_id = oci_identity_compartment.compartment.id
   # operating_system         = var.instance_os
   # operating_system_version = var.linux_os_version
 
